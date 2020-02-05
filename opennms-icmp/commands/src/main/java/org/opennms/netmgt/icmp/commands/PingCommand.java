@@ -46,7 +46,7 @@ import org.opennms.netmgt.icmp.proxy.PingSummary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Command(scope = "opennms-ping", name = "ping", description = "Ping")
+@Command(scope = "opennms", name = "ping", description = "ICMP Ping")
 @Service
 public class PingCommand implements Action {
 

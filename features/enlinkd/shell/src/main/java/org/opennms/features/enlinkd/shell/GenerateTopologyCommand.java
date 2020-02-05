@@ -45,7 +45,7 @@ import org.opennms.netmgt.enlinkd.api.ReloadableTopologyDaemon;
  * Install: feature:install opennms-enlinkd-shell
  * Usage: type 'opennms-enlinkd:generate-topology' in karaf console
  */
-@Command(scope = "opennms-enlinkd", name = "generate-topology", description = "Creates a linkd topology")
+@Command(scope = "opennms", name = "generate-topology", description = "Creates a linkd topology")
 @Service
 public class GenerateTopologyCommand implements Action {
 

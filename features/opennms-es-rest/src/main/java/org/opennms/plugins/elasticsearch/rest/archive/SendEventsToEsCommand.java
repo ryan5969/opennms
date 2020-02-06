@@ -51,7 +51,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Craig Gallen <cgallen@opennms.org>
  */
-@Command(scope = "opennms-elasticsearch", name = "send-historic-events", description="Sends events in selected OpenNMS to Elasticsearch")
+@Command(scope = "opennms", name = "send-events-to-elasticsearch", description="Sends events in selected OpenNMS to Elasticsearch")
 @Service
 public class SendEventsToEsCommand implements Action {
 

@@ -19,12 +19,11 @@
       <groupId>org.snmp4j</groupId>
       <artifactId>snmp4j</artifactId>
       <version>${snmp4jVersion}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>log4j</groupId>
-          <artifactId>log4j</artifactId>
-        </exclusion>
-      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.snmp4j</groupId>
+      <artifactId>snmp4j-log4j</artifactId>
+      <version>${snmp4jVersion}</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>

@@ -1110,7 +1110,7 @@
     <mock.db.driver>org.postgresql.Driver</mock.db.driver>
     <mock.db.url>jdbc:postgresql://localhost:5432/</mock.db.url>
     <mock.db.adminUser>postgres</mock.db.adminUser>
-    <mock.db.adminPassword/>
+    <mock.db.adminPassword>postgres</mock.db.adminPassword>
     <mock.runSnmpTests>false</mock.runSnmpTests>
     <mock.snmpHost>localhost</mock.snmpHost>
     <install.version>${project.version}</install.version>
@@ -1309,7 +1309,7 @@
     <servicemixSpecsVersion>2.9.0</servicemixSpecsVersion>
     <servletApiVersion>3.1.0</servletApiVersion>
     <slf4jVersion>1.7.26</slf4jVersion>
-    <snmp4jVersion>2.5.5</snmp4jVersion>
+    <snmp4jVersion>2.8.2</snmp4jVersion>
     <snmp4jagentVersion>2.5.3</snmp4jagentVersion>
     <smackVersion>4.0.6</smackVersion>
     <spockVersion>1.1-groovy-2.4</spockVersion>

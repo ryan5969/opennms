@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 
 import org.apache.commons.lang.StringUtils;
+import org.opennms.core.utils.SystemInfoUtils;
 import org.opennms.netmgt.snmp.SnmpAgentConfig;
 import org.snmp4j.CommunityTarget;
 import org.snmp4j.MessageDispatcher;
@@ -227,7 +228,7 @@ public class Snmp4JAgentConfig {
      * Adapts the OpenNMS SNMPv3 community name to an SNMP4J compatible
      * community name (String -> OctetString)
      * 
-     * @param agentConfig
+     * @param community
      * @return
      */
     private static OctetString convertCommunity(String community) {
@@ -344,8 +345,10 @@ public class Snmp4JAgentConfig {
             disp.addMessageProcessingModel(new MPv2c());
             session = new Snmp(disp, transport);
         } else {
+            // Create custom engine Id from the OpenNMS InstanceId.
+            byte[] localEngineId = MPv3.createLocalEngineID(createPersistentId());
             // Make a new USM
-            final USM usm = new USM(SecurityProtocols.getInstance(), new OctetString(MPv3.createLocalEngineID()), 0);
+            final USM usm = new USM(SecurityProtocols.getInstance(), new OctetString(localEngineId), 0);
             // Add the specified user to the USM
             usm.addUser(
                 getSecurityName(),
@@ -361,6 +364,15 @@ public class Snmp4JAgentConfig {
             session = new Snmp(disp, transport);
         }
         return session;
+    }
+
+    private OctetString createPersistentId() {
+        String instanceId = SystemInfoUtils.getInstanceId();
+        // Limit this instance to 23 bytes.
+        if (instanceId.length() > 24) {
+            instanceId = instanceId.substring(0, 23);
+        }
+        return new OctetString(instanceId);
     }
 
     /**

@@ -41,11 +41,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p>Command example: {@code opennms-elasticsearch:send-historic-events 100 0 admin admin http://localhost:8980 false}</p>
+ * <p>Command example: {@code opennms:send-events-to-elasticsearch 100 0 admin admin http://localhost:8980 false}</p>
  * 
  * <p>This retrieves 110 alarms from the local machine using the local node cache for node label.</p>
  * 
- * <p>Command example: {@code opennms-elasticsearch:send-historic-events 100 0 demo demo http://demo.opennms.org true}</p>
+ * <p>Command example: {@code opennms:send-events-to-elasticsearch 100 0 demo demo http://demo.opennms.org true}</p>
  * 
  * <p>This retrieves 110 alarms from the remote machine using the node label.</p>
  * 

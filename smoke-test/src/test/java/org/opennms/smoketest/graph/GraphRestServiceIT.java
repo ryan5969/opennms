@@ -434,7 +434,7 @@ public class GraphRestServiceIT extends OpenNMSSeleniumIT {
         });
 
         // Force application provider to reload (otherwise we have to wait until cache is invalidated)
-        karafShell.runCommand("opennms-graph:force-reload --container application");
+        karafShell.runCommand("opennms:graph-force-reload --container application");
 
         // Fetch data nothing down
         final JSONObject query = new JSONObject()
@@ -471,7 +471,7 @@ public class GraphRestServiceIT extends OpenNMSSeleniumIT {
 
         // Take service down, reload graph and verify
         restClient.sendEvent(nodeLostServiceEvent);
-        karafShell.runCommand("opennms-graph:force-reload --container application");
+        karafShell.runCommand("opennms:graph-force-reload --container application");
         final Response response = given().log().ifValidationFails()
                 .body(query.toString())
                 .contentType(ContentType.JSON)
@@ -489,7 +489,7 @@ public class GraphRestServiceIT extends OpenNMSSeleniumIT {
 
         // Take node down, reload graph and verify
         restClient.sendEvent(nodeDownEvent);
-        karafShell.runCommand("opennms-graph:force-reload --container application");
+        karafShell.runCommand("opennms:graph-force-reload --container application");
         final Response response2 = given().log().ifValidationFails()
                 .body(query.toString())
                 .contentType(ContentType.JSON)

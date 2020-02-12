@@ -69,7 +69,7 @@ public class PingCommand implements Action {
 
     @Override
     public Object execute() throws Exception {
-        LOG.debug("opennms-ping:ping {} {}", m_location != null ? "-l " + m_location : "", m_host);
+        LOG.debug("opennms:ping {} {}", m_location != null ? "-l " + m_location : "", m_host);
         final InetAddress byName = InetAddress.getByName(m_host);
         final PingRequestBuilder.Callback callback = (newSequence, summary) -> {
             if (m_count > 1) {

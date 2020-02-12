@@ -40,7 +40,7 @@ import org.opennms.netmgt.enlinkd.api.ReloadableTopologyDaemon;
 /**
  * Deletes the generated topology via karaf command. The topology is identified as it belongs to the category "GeneratedNode"
  * Install: feature:install opennms-enlinkd-shell
- * Usage: type opennms-enlinkd:delete-topology in karaf console
+ * Usage: type opennms:delete-topology in karaf console
  */
 @Command(scope = "opennms", name = "delete-topology",
         description = "Delete generated topology (OnmsNodes, XxElements, XxLinks, SnmpInterfaces, IpInterfaces." +

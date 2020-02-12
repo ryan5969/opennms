@@ -66,6 +66,8 @@ import org.snmp4j.transport.DefaultUdpTransportMapping;
 public class Snmp4JAgentConfig {
     
     private SnmpAgentConfig m_config;
+
+    private byte[] localEngineId;
     
     public Snmp4JAgentConfig(SnmpAgentConfig config) {
         m_config = config;
@@ -253,7 +255,7 @@ public class Snmp4JAgentConfig {
         }            
     }
 
-    protected Target getTarget() {
+    public Target getTarget() {
         Target target = createTarget();
         target.setVersion(getVersion());
         target.setRetries(getRetries());
@@ -346,7 +348,7 @@ public class Snmp4JAgentConfig {
             session = new Snmp(disp, transport);
         } else {
             // Create custom engine Id from the OpenNMS InstanceId.
-            byte[] localEngineId = MPv3.createLocalEngineID(createPersistentId());
+            localEngineId = MPv3.createLocalEngineID(createPersistentId());
             // Make a new USM
             final USM usm = new USM(SecurityProtocols.getInstance(), new OctetString(localEngineId), 0);
             // Add the specified user to the USM
@@ -373,6 +375,10 @@ public class Snmp4JAgentConfig {
             instanceId = instanceId.substring(0, 23);
         }
         return new OctetString(instanceId);
+    }
+
+    public byte[] getLocalEngineId() {
+        return localEngineId;
     }
 
     /**

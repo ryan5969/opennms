@@ -72,7 +72,7 @@ public class GraphProviderIT extends OpenNMSSeleniumIT {
                         && jsonGraph.getJSONArray("vertices").length() == 5;
             });
         } finally {
-            karafShell.runCommand("opennms:bsm-delete-hierarchies");
+            karafShell.runCommand("opennms:bsm-delete-generated-hierarchies");
         }
     }
 
@@ -121,7 +121,7 @@ public class GraphProviderIT extends OpenNMSSeleniumIT {
         });
 
         // Delete hierarchy and verify daemon reloaded successful
-        karafShell.runCommand("opennms:bsm-delete-hierarchies");
+        karafShell.runCommand("opennms:bsm-delete-generated-hierarchies");
         Unreliables.retryUntilSuccess(30, TimeUnit.SECONDS, () -> {
             given().log().ifValidationFails()
                     .accept(ContentType.JSON)
